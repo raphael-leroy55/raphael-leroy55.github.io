@@ -21,6 +21,13 @@ LAYOUT  : bandeaux pleine largeur, contenu jusqu'à 72rem, colonne de lecture de
   src:url(fonts/source-serif-4-latin-ext-opsz-italic.woff2) format("woff2-variations"),url(fonts/source-serif-4-latin-ext-opsz-italic.woff2) format("woff2");
   unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:swap;
+  src:url(fonts/source-serif-4-greek-opsz-normal.woff2) format("woff2-variations"),url(fonts/source-serif-4-greek-opsz-normal.woff2) format("woff2");
+  unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}
+@font-face{font-family:"Source Serif 4";font-style:italic;font-weight:200 900;font-display:swap;
+  src:url(fonts/source-serif-4-greek-opsz-italic.woff2) format("woff2-variations"),url(fonts/source-serif-4-greek-opsz-italic.woff2) format("woff2");
+  unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}
+
 :root{color-scheme:light dark;
   --bg:#fcfbf8;--ink:#1d1a16;--muted:#5e564b;--rule:#ddd4c6;--link:#7a4a14;--linkh:#4c2c06;
   --note:#f4efe6;--band:#f5f1ea;--btn-ink:#fcfbf8}
@@ -195,3 +202,35 @@ main.chapter{padding-top:2.2rem}
 .method-link{margin:-.4em 0 1em}
 .nw{white-space:nowrap}
 main:has(> .livres:last-child) + .site-footer{margin-top:0;border-top:0}
+
+/* second livre : le sablier asymétrique de « Traverser le Zéro » */
+.hourglass{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+.zlayer{display:block;text-align:center;text-decoration:none;color:var(--lc);background:var(--c);
+  clip-path:var(--clip);padding:.95em calc(var(--pad) + .8em) .85em;transition:filter .2s ease}
+.zlayer:hover{color:var(--lc);filter:brightness(1.07)}
+.zlayer:focus-visible{outline:3px solid var(--ink);outline-offset:-5px}
+.zlayer .t{display:block;font-weight:600;line-height:1.2}
+.zlayer .num{display:inline-block;font-weight:700;font-size:.78rem;border:1px solid currentColor;border-radius:3px;
+  padding:0 .42em;margin-right:.5em;opacity:.85;vertical-align:.14em}
+.zlayer .d{display:block;font-size:.84rem;opacity:.85;margin-top:.18em;line-height:1.3}
+@media (prefers-reduced-motion:no-preference){
+  .hourglass li{animation:settle .7s cubic-bezier(.2,.7,.2,1) both}
+  .hourglass li:nth-child(2){animation-delay:.05s}.hourglass li:nth-child(3){animation-delay:.1s}
+  .hourglass li:nth-child(4){animation-delay:.15s}.hourglass li:nth-child(5){animation-delay:.2s}
+  .hourglass li:nth-child(6){animation-delay:.25s}.hourglass li:nth-child(7){animation-delay:.3s}}
+.book-card.zero::before{background:linear-gradient(#eef0f3 0 14.3%,#dde2e9 0 28.6%,#c5cdd8 0 42.9%,#a3afc0 0 57.1%,#3e4a62 0 71.4%,#93a0b5 0 85.7%,#d4dae2 0)}
+.chap-sub{font-size:1.12rem;color:var(--muted);margin:-.2em 0 1.4em}
+.sommaire .per-block{display:block;color:var(--muted);font-size:.9rem;margin-top:.1em}
+.table-wrap{overflow-x:auto;margin:1.4em 0}
+.text table{border-collapse:collapse;width:100%;font-size:.88em;line-height:1.4}
+.text th,.text td{border-top:1px solid var(--rule);padding:.5em .6em;text-align:left;vertical-align:top}
+.text thead th{border-top:0;border-bottom:2px solid var(--rule);font-weight:600}
+.text tbody tr:last-child td{border-bottom:1px solid var(--rule)}
+@media (max-width:420px){.zlayer{padding-left:calc(var(--pad) + .4em);padding-right:calc(var(--pad) + .4em)}.zlayer .d{font-size:.8rem}}
+.text table{hyphens:manual;-webkit-hyphens:manual}
+.book-grid{grid-template-rows:auto 1fr}
+.book-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,27rem),1fr));gap:1.6rem;margin:0 0 2.6em}
+.book-cards .book-card{margin:0;max-width:none;display:flex;flex-direction:column}
+.book-cards .book-card .actions{margin-top:auto}
+.kicker{display:block;font-size:.42em;font-weight:600;color:var(--muted);letter-spacing:.03em;margin-bottom:.35em}
+@media (max-width:760px){.book-grid{grid-template-rows:auto}}
